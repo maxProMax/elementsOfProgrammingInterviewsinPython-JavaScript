@@ -1,14 +1,15 @@
-class ListNode {
-    constructor(data = 0, nextNode = null) {
-        this.data = data;
-        this.next = nextNode;
-    }
+const {ListNode} = require('./helpers'); 
+// class ListNode {
+//     constructor(data = 0, nextNode = null) {
+//         this.data = data;
+//         this.next = nextNode;
+//     }
 
-    getData() {
-        const nextData = this.next ? this.next.getData() : [];
-        return [this.data, ...nextData]
-    }
-}
+//     getData() {
+//         const nextData = this.next ? this.next.getData() : [];
+//         return [this.data, ...nextData]
+//     }
+// }
 
 function mergeTwoSortedLists(L1, L2) {
     let dummyHead = tail = new ListNode();

@@ -1,13 +1,4 @@
-class ListNode:
-    def __init__(self, data = 0, next_node = None):
-        self.data = data
-        self.next = next_node
-
-    def getData(self):
-        next_data = self.next.getData() if self.next else []
-        result = [self.data]
-        result.extend(next_data)
-        return result
+from helpers import ListNode
 
 def search_list(L, key):
     while L and L.data != key:
