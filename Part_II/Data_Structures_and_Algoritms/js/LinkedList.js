@@ -1,4 +1,4 @@
-const {ListNode} = require('./helpers'); 
+const { ListNode } = require('./helpers');
 // class ListNode {
 //     constructor(data = 0, nextNode = null) {
 //         this.data = data;
@@ -12,7 +12,7 @@ const {ListNode} = require('./helpers');
 // }
 
 function mergeTwoSortedLists(L1, L2) {
-    let dummyHead = tail = new ListNode();
+    let dummyHead = (tail = new ListNode());
 
     while (L1 && L2) {
         if (L1.data > L2.data) {
@@ -37,7 +37,7 @@ const mergedList = mergeTwoSortedLists(list1, list2);
 // console.log(mergedList.getData()) // -> [1, 2, 3, 4, 5, 6]
 
 function reverseSublist(L, start, finish) {
-    let dummyHead = sublistHead = new ListNode(0, L);
+    let dummyHead = (sublistHead = new ListNode(0, L));
     for (let i = 1; i < start; i++) {
         sublistHead = sublistHead.next;
     }
@@ -71,7 +71,7 @@ function hasCycle(head) {
         }
     }
 
-    let fast = slow = head;
+    let fast = (slow = head);
 
     while (fast && fast.next && fast.next.next) {
         slow = slow.next;
@@ -86,7 +86,7 @@ function hasCycle(head) {
             }
 
             let it = head;
-            
+
             while (it !== cycleLenAdvancedIter) {
                 it = it.next;
                 cycleLenAdvancedIter = cycleLenAdvancedIter.next;
@@ -100,7 +100,7 @@ function hasCycle(head) {
 }
 
 function hasCycle1(head) {
-    let fast = slow = head;
+    let fast = (slow = head);
 
     while (fast && fast.next && fast.next.next) {
         slow = slow.next;
@@ -108,7 +108,7 @@ function hasCycle1(head) {
 
         if (fast === slow) {
             let slow = head;
-            
+
             while (slow !== fast) {
                 slow = slow.next;
                 fast = fast.next;
@@ -121,11 +121,15 @@ function hasCycle1(head) {
     return null;
 }
 
-const createNodeArray = (count) => Array(count).fill(1).map((item, i) => new ListNode(i + 1));
-const joinNodes = array => array.map((node, i, arr) => {
-    node.next = arr[i + 1] || null;
-    return node;
-});
+const createNodeArray = (count) =>
+    Array(count)
+        .fill(1)
+        .map((item, i) => new ListNode(i + 1));
+const joinNodes = (array) =>
+    array.map((node, i, arr) => {
+        node.next = arr[i + 1] || null;
+        return node;
+    });
 
 let cycleList = createNodeArray(6);
 
@@ -143,7 +147,7 @@ cycleList.forEach((node, i, arr) => {
 function overlappingNoCycleLists(L1, L2) {
     function length(L) {
         let length = 0;
-        
+
         while (L) {
             L = L.next;
             length += 1;
@@ -216,7 +220,7 @@ function overlappingLists(L1, L2) {
 
     let stem1Length = distance(L1, root1);
     let stem2Length = distance(L2, root2);
-    
+
     if (stem1Length > stem2Length) {
         let temp = L1;
         L1 = L2;
@@ -235,17 +239,18 @@ function overlappingLists(L1, L2) {
         L2 = L2.next;
     }
 
-    return L1 === L2 ? L1 : root1; 
+    return L1 === L2 ? L1 : root1;
 }
 
 // console.log('overlappingLists', overlappingLists(overlappingL1[0], overlappingL2[0]));
 
 function deletionFromList(nodeToDelete) {
-    nodeToDelete.data = nodeToDelete.next.data
-    nodeToDelete.next = nodeToDelete.next.next
+    nodeToDelete.data = nodeToDelete.next.data;
+    nodeToDelete.next = nodeToDelete.next.next;
 }
 
-function removeKthLast(L, k) {// k-th element from the end
+function removeKthLast(L, k) {
+    // k-th element from the end
     let dummyHead = new ListNode(0, L);
     let first = dummyHead.next;
 
@@ -332,10 +337,10 @@ function evenOddMerge(L) {
         tails[turn] = tails[turn].next;
         turn ^= 1;
     }
-    
+
     tails[1].next = null;
     tails[0].next = oddDummyHead.next;
-    
+
     return evenDummyHead.next;
 }
 
@@ -356,7 +361,7 @@ function reverseLinkedList(L) {
 
 function isLinkedListAPalindrome(L) {
     // Finds the second half of L
-    let slow = fast = L;
+    let slow = (fast = L);
 
     while (fast && fast.next) {
         fast = fast.next.next;
@@ -379,13 +384,19 @@ function isLinkedListAPalindrome(L) {
     return true;
 }
 
-const list3 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3, new ListNode(2, new ListNode(1))))));
+const list3 = new ListNode(
+    1,
+    new ListNode(
+        2,
+        new ListNode(3, new ListNode(3, new ListNode(2, new ListNode(1))))
+    )
+);
 // console.log('isLinkedListAPalindrome', isLinkedListAPalindrome(list3));
 
-function listPivoting (L, x) {
-    let lessHead = lessIter = ListNode();
-    let equalHead = equalIter = ListNode();
-    let greaterHead = greaterIter = ListNode();
+function listPivoting(L, x) {
+    let lessHead = (lessIter = ListNode());
+    let equalHead = (equalIter = ListNode());
+    let greaterHead = (greaterIter = ListNode());
 
     while (L) {
         if (L.data < x) {
@@ -410,16 +421,16 @@ function listPivoting (L, x) {
 }
 
 function addTwoNumbers(L1, L2) {
-    let placeInter = dummyHead = ListNode();
+    let placeInter = (dummyHead = ListNode());
     let curry = 0;
 
     while (L1 && L2) {
-       val = curry + (L1 ? L1.data : 0) + (L2 ? L2.data : 0);
-       L1 = L1 ? L1.next : null; 
-       L2 = L2 ? L2.next : null;
-       placeInter.next = ListNode(val % 10);
-       placeInter = placeInter.next;
-       curry = Math.floor(val / 10);
+        val = curry + (L1 ? L1.data : 0) + (L2 ? L2.data : 0);
+        L1 = L1 ? L1.next : null;
+        L2 = L2 ? L2.next : null;
+        placeInter.next = ListNode(val % 10);
+        placeInter = placeInter.next;
+        curry = Math.floor(val / 10);
     }
 
     return dummyHead.next;
